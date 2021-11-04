@@ -37,5 +37,7 @@ url-http://localhost:3000/api/
 | product/ | post with product details | adds the product |
 | product/find/:id | get | find single product using id |
 | product/ | get | gives list of all products |
+| product?new={number} | get | gives latest products {count=number entered in query string}  |
+| product?category={name} | get | filters product according to the category |
 | product/:id | delete | delete product with given id |
 | product/:id | put | updates the products with given id |
