@@ -70,7 +70,7 @@ router.get("/",async(req,res)=>{
     try{
         if(qnew)
         {
-            products=await Product.find().sort({createdAt:-1}).limit(5);
+            products=await Product.find().sort({createdAt:-1}).limit(4);
             //finding new products
         }
         else if(qcategory)
