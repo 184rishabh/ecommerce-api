@@ -15,29 +15,29 @@
 
 # Documentation
 
-url-http://localhost:3000/api/
+Base-Url-http://localhost:3000/api/
 
-| account | Method |Description |
-| --- | --- | --- |
-| auth/register | post {email,username,password} | Registers the user |
-| auth/login | post {email,password} | User Login |
-
-##
-
-| user route | Method |Description |
-| --- | --- | --- |
-| user/:id | put {username,password} | Update user credential in case of forgot password |
-| user/find | get | find all user registered |
-| user/:id | delete | deletes the user |
+| account | Method | How to Use|Description |
+| --- | --- | --- |--- |
+| auth/register | `post` | Accepts the Username ,Email,<br>Password of User | Registers the user |
+| auth/login | `post` | Accepts Username and Password | User Login |
 
 ##
 
-| product route | Method |Description |
-| --- | --- | --- |
-| product/ | post with product details | adds the product |
-| product/find/:id | get | find single product using id |
-| product/ | get | gives list of all products |
-| product?new={number} | get | gives latest products {count=number entered in query string}  |
-| product?category={name} | get | filters product according to the category |
-| product/:id | delete | delete product with given id |
-| product/:id | put | updates the products with given id |
+| user routes | Method | How to Use |Description |
+| --- | --- | --- |--- |
+| `user/:id` | `put` | Call the API with required bearer JWT token in<br> header and the details that are to be changed.| Update user credential |
+| `user/find` | `get` | Call the API with required bearer JWT token |find all user registered |
+| `user/:id` | `delete` | Call the API with required bearer JWT token | deletes the user |
+
+##
+
+| product routes | Method | How to Use | Description |
+| --- | --- | --- | --- |
+| `product/`| `post` | Requires a JSON of prodict details and JWT token in the header | adds the product |
+| `product/find/:id` | `get` | Just call the API | find single product using id |
+| `product/` | `get` | Call the API with JWT toke in header | gives list of all products |
+| `product?new={number}` | `get` | Just call the API with query string | gives latest products {count=number entered in query string}  |
+| `product?category={name}` | `get` | Just call the API with query string | filters product according to the category |
+| `product/:id` | `delete` | Call the API with JWT token in the header | delete product with given id |
+| `product/:id` | `put` |  Requires a JSON of changed detail of product and JWT token in the header | updates the products with given id |
