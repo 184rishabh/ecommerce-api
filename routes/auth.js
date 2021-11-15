@@ -7,18 +7,30 @@ const jwt=require('jsonwebtoken');
 
 //Register
 router.post('/register',async (req,res)=>{
-
-    const newuser=new User({
-        username:req.body.username,
-        email:req.body.email,
-        password:bcrypt.hashSync(req.body.password,10),
-    });
-    try{
-        const saveuser=await newuser.save();
-        res.status(200).json(saveuser);
-
-    }catch(err){
-         res.status(500).json(err);
+    
+    const username=await User.findOne({username:req.body.username});
+    const email=await User.findOne({email:req.body.email});
+    if(username)
+    {
+       res.status(400).json({error:"user existing"})
+    }
+    else if(email)
+    {
+       res.status(400).json({error:"email existing"})
+    }
+    else{
+        const newuser=new User({
+            username:req.body.username,
+            email:req.body.email,
+            password:bcrypt.hashSync(req.body.password,10),
+        });
+        try{
+            const saveuser=await newuser.save();
+            res.status(200).json(saveuser);
+    
+        }catch(err){
+             res.status(500).json(err);
+        }
     }
 })
 // login
@@ -27,7 +39,7 @@ router.post('/login',async (req,res)=>{
         const user=await User.findOne({username:req.body.username});
         if(!user)
         {
-            return res.status(400).send('the user not found');
+            return res.status(400).json({error:'the user not found'});
         }
         const hashpass=bcrypt.compareSync(req.body.password,user.password);
         if(user && hashpass)
@@ -42,7 +54,7 @@ router.post('/login',async (req,res)=>{
         }
         else
         {
-            res.status(500).send('wrong password');
+            res.status(500).json({error:'wrong password'});
         }
     }
     catch(err)

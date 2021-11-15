@@ -1,6 +1,7 @@
 const express=require('express');
 const mongoose=require('mongoose');
 const dotenv=require('dotenv');
+const cors=require('cors');
 
 const authroute=require('./routes/auth')
 const userroute=require('./routes/user');
@@ -8,6 +9,7 @@ const productroute=require('./routes/product');
 
 
 const app=express();
+app.use(cors())
 dotenv.config();
 app.use(express.json());
 
@@ -22,6 +24,6 @@ console.log('database connected')).catch((err)=>{
 })
 
 
-app.listen(3000,()=>{
-    console.log('server is running on port 3000');
+app.listen(5000,()=>{
+    console.log('server is running on port 5000');
 })
