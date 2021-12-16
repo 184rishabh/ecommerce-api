@@ -21,7 +21,7 @@ const { verifytokenauthorization, verifytokenandadmin } = require('./verifytoken
    }
    catch(err)
    {
-       res.status(500).send("product can not be created");
+       res.status(500).json({error:err});
    }
  });
 

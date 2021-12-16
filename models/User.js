@@ -19,7 +19,11 @@ const userschema=new mongoose.Schema(
         isadmin:{
             type:Boolean,
             default:false,
+        },
+        address:{
+            type:String
         }
+
     },{timestamps:true}
 
 );

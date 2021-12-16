@@ -4,6 +4,7 @@ const User=require('../models/User');
 const bcrypt=require('bcryptjs');
 const {verifytoken,verifytokenauthorization, verifytokenandadmin}=require('./verifytoken');
 
+//User update
 router.put("/:id",verifytokenauthorization, async (req,res)=>{
 
      if(req.body.password)
@@ -23,14 +24,13 @@ router.put("/:id",verifytokenauthorization, async (req,res)=>{
 })
 //DELETE USER
 router.delete('/:id',verifytokenauthorization,async(req,res)=>{
-
-    try{
+    try{   
         await User.findByIdAndDelete(req.params.id);
         res.status(200).json("user deleted");
 
     }
     catch(err){
-       res.status(500).json(err)
+       res.status(500).json({error:err})
     }
 })
 //get all user

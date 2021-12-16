@@ -2,10 +2,14 @@ const mongoose=require('mongoose');
 
 const orderschema=new mongoose.Schema(
     {
-        userid:{
+        paymentid:{
             type:String,
             required:true,
         },
+        userid:{
+            type:String,
+            required:true,
+        }, 
         products:[
             {
                 productid:{
@@ -14,6 +18,9 @@ const orderschema=new mongoose.Schema(
                 quantity:{
                     type:Number,
                     default:1,
+                },
+                title:{
+                    type:String,
                 }
             },
         ],

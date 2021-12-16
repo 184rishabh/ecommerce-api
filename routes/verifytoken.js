@@ -9,7 +9,7 @@ const verifytoken=(req,res,next)=>{
         jwt.verify(token,process.env.JWT_KEY,(err,user)=>{
             if(err)
             {
-                res.status(403).send("token not valid");
+                res.status(403).json({error:"token not valid"});
             }
             req.user=user;
             next();
@@ -21,6 +21,7 @@ const verifytoken=(req,res,next)=>{
 };
 const verifytokenauthorization=(req,res,next)=>{
     verifytoken(req,res,()=>{
+       
         if(req.user.id === req.params.id||req.user.isadmin)
         {
             next();
