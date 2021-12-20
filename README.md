@@ -36,7 +36,7 @@ Base-Url-http://localhost:3000/api/
 | --- | --- | --- | --- |
 | `product/`| `post` | Requires a JSON of prodict details and JWT token in the header | adds the product |
 | `product/find/:id` | `get` | Just call the API | find single product using id |
-| `product/` | `get` | Call the API with JWT toke in header | gives list of all products |
+| `product/` | `get` | Call the API with JWT token in header | gives list of all products |
 | `product?new={number}` | `get` | Just call the API with query string | gives latest products {count=number entered in query string}  |
 | `product?category={name}` | `get` | Just call the API with query string | filters product according to the category |
 | `product/:id` | `delete` | Call the API with JWT token in the header | delete product with given id |
